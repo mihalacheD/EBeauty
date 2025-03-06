@@ -3,9 +3,10 @@ import { useState, useEffect } from "react"
 import options from "../services/api-client"
 
 
-interface Product {
+export interface Product {
   id: number,
-  title: string
+  title: string,
+  thumbnail: string
 }
 
 const useProducts = () => {
