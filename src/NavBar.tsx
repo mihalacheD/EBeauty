@@ -2,8 +2,9 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from './assets/logo.svg';
 import { Tooltip } from "./components/ui/tooltip"
-import { Flex, Text, Image, Button } from "@chakra-ui/react";
+import { Flex, Image, Button } from "@chakra-ui/react";
 import { X, Menu, Search, LogIn, Heart, ShoppingCart  } from 'lucide-react';
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,15 +21,16 @@ const NavBar = () => {
       {/* Desktop Menu */}
       <Flex justify="space-around" display={{ base: "none", xl: "flex" }} paddingX={8} paddingY={4}>
         <Flex gap={6} >
-          <Text>New Arrivals</Text>
-          <Text>Icons</Text>
-          <Text>Clothing</Text>
-          <Text>Bags</Text>
-          <Text>Shoes</Text>
-          <Text>Accessories</Text>
-          <Text>Sport</Text>
-          <Text>Gift Card</Text>
-          <Text>Sale</Text>
+          <Link to="/">Home</Link>
+          <Link to="/category/fragrances">Fragrances</Link>
+          <Link to="/category/skincare">Skincare</Link>
+          <Link to="/category/mens-shirts">Clothing</Link>
+          <Link to="/category/womens-bags">Bags</Link>
+          <Link to="/category/mens-shoes">Shoes</Link>
+          <Link to="/category/womens-jewellery">Accessories</Link>
+          <Link to="/category/tops">Tops</Link>
+          <Link to="/category/home-decoration">Home Decoration</Link>
+          <Link to="/category/sale">Sale</Link>
         </Flex>
         <Flex gap={10} >
           <Tooltip content="Search..." ><Search size={25}/></Tooltip>
@@ -89,15 +91,16 @@ const NavBar = () => {
           paddingY={6}
           gap={4}
         >
-          <Text>New Arrivals</Text>
-          <Text>Icons</Text>
-          <Text>Clothing</Text>
-          <Text>Bags</Text>
-          <Text>Shoes</Text>
-          <Text>Accessories</Text>
-          <Text>Sport</Text>
-          <Text>Gift Card</Text>
-          <Text>Sale</Text>
+          <Link to="/">Home</Link>
+          <Link to="/category/fragrances">Fragrances</Link>
+          <Link to="/category/skincare">Skincare</Link>
+          <Link to="/category/mens-shirts">Clothing</Link>
+          <Link to="/category/womens-bags">Bags</Link>
+          <Link to="/category/mens-shoes">Shoes</Link>
+          <Link to="/category/womens-jewellery">Accessories</Link>
+          <Link to="/category/tops">Tops</Link>
+          <Link to="/category/home-decoration">Home Decoration</Link>
+          <Link to="/category/sale">Sale</Link>
         </Flex>
         </motion.div>
       )}
