@@ -13,10 +13,12 @@ export interface Product {
 const useProducts = () => {
   const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState("")
+  const [isLoading, setLoading] = useState(false)
 
   useEffect(() => {
 
   const controller = new AbortController()
+  setLoading(true)
 
    axios
      .get(options.url, {params: options.params, signal: controller.signal})
@@ -27,15 +29,17 @@ const useProducts = () => {
         rating: Math.floor(Math.random() * 5) + 1, // Rating aleatoriu între 1 și 5
       }));
       setProducts(updatedProducts);
+      setLoading(false)
     })
      .catch(error => {
         if (error instanceof CanceledError) return
         setError(error.message)
+        setLoading(false)
       })
         return () => controller.abort()
   }, [])
 
-  return { products, error}
+  return { products, error, isLoading}
 }
 
 export default useProducts;
