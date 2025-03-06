@@ -1,4 +1,5 @@
 import { GridItem , Grid} from "@chakra-ui/react"
+import Products from "./Products"
 
 const HomePage = () => {
   return (
@@ -6,7 +7,7 @@ const HomePage = () => {
       base: `"main"`
     }}>
       <GridItem area='main'>
-        Main
+        <Products/>
       </GridItem>
     </Grid>
   )
