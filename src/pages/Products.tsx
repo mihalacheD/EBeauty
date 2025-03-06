@@ -1,26 +1,8 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import options from "../services/api-client"
-
-
-interface Product {
-  id: number,
-  title: string
-}
+import useProducts from "../hooks/useProducts";
 
 
 const Products = () => {
- const [products, setProduducts] = useState<Product[]>([])
- const [error, setError] = useState("")
-
- useEffect(() => {
-  axios
-    .get(options.url, {params: options.params})
-    .then((res) => {
-      setProduducts(res.data.products)
-      })
-    .catch(error => setError(error.message))
- }, [])
+ const { products, error} = useProducts()
 
  return (
   <>
