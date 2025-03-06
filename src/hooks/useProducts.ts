@@ -6,11 +6,12 @@ import options from "../services/api-client"
 export interface Product {
   id: number,
   title: string,
-  thumbnail: string
+  thumbnail: string,
+  rating: number
 }
 
 const useProducts = () => {
-  const [products, setProduducts] = useState<Product[]>([])
+  const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState("")
 
   useEffect(() => {
@@ -20,8 +21,13 @@ const useProducts = () => {
    axios
      .get(options.url, {params: options.params, signal: controller.signal})
      .then((res) => {
-       setProduducts(res.data.products)
-       })
+       // Adăugăm un rating aleatoriu fiecărui produs
+       const updatedProducts = res.data.products.map((product: Product) => ({
+        ...product,
+        rating: Math.floor(Math.random() * 5) + 1, // Rating aleatoriu între 1 și 5
+      }));
+      setProducts(updatedProducts);
+    })
      .catch(error => {
         if (error instanceof CanceledError) return
         setError(error.message)
