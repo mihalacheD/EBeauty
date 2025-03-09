@@ -1,6 +1,7 @@
-import { Box, Card, Flex, Heading, Image, Text } from '@chakra-ui/react'
+import { Box, Card, Flex, Image, Text } from '@chakra-ui/react'
 import { Product } from '../hooks/useProducts'
 import RenderStar from './RenderStar';
+import ExpandableText from './ExpandableText';
 
 interface Props {
   product: Product
@@ -25,17 +26,9 @@ const ProductCard = ({ product }: Props) => {
         borderRadius="md"
         mx="auto" // Centrarea imaginii
       />
-      <Card.Body textAlign="center" padding="4" display="flex" flexDirection="column" justifyContent="space-between" flex="1">
+      <Card.Body textAlign="center" padding={5}  display="flex" flexDirection="column" justifyContent="space-between" flex="1">
         <Flex direction="column" gap={4} alignItems="center">
-          <Heading
-            fontSize={["xl", "2xl", "3xl"]} // Ajustează fontul pentru ecrane mici, medii și mari
-            fontFamily="'Poppins', cursive"
-            fontWeight="light"
-            color="gray.600"
-            textAlign="center"
-          >
-            {product.title}
-          </Heading>
+           <ExpandableText children={product.title}/>
           <RenderStar rating={product.rating} />
         </Flex>
 
