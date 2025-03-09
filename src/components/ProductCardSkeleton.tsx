@@ -13,7 +13,7 @@ const ProductCardSkeleton = () => {
     gap={9}
     marginX={5}
     >
-        <Skeleton height={{sm : '506px', md: '414px', lg: '340px', xl: '447px'}}/>
+        <Skeleton height={{sm : '474px', md: '337px', lg: '268px', xl: '276px'}}/>
       <Card.Body textAlign="center" padding="4">
         <SkeletonText/>
       </Card.Body>

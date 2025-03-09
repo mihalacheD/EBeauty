@@ -45,7 +45,7 @@ const NavBar = () => {
         justify="space-between"
         align="center"
         display={{ base: "flex", xl: "none" }}
-        padding={8}
+        padding={4}
       >
 
       <motion.div

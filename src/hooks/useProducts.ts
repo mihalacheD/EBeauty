@@ -7,7 +7,8 @@ export interface Product {
   id: number,
   title: string,
   thumbnail: string,
-  rating: number
+  rating: number,
+  price: number
 }
 
 const useProducts = () => {

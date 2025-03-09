@@ -1,4 +1,4 @@
-import { Card, Flex, Heading, Image } from '@chakra-ui/react'
+import { Box, Card, Flex, Heading, Image, Text } from '@chakra-ui/react'
 import { Product } from '../hooks/useProducts'
 import RenderStar from './RenderStar';
 
@@ -10,29 +10,48 @@ const ProductCard = ({ product }: Props) => {
   return (
     <Card.Root
       borderRadius="lg"
-      borderColor='gray.100'
+      borderColor="gray.100"
       bg="white"
       boxShadow="sm"
-      p="4"
-      gap={9}
-      marginX={5}
+      height="100%"
+      display="flex"
+      flexDirection="column"
+      maxW="sm"
     >
       <Image
         src={product.thumbnail}
         alt={product.title}
         objectFit="cover"
         borderRadius="md"
+        mx="auto" // Centrarea imaginii
       />
-      <Card.Body textAlign="center" padding="4">
-        <Flex direction='column' gap={4} alignItems='center'>
-            <Heading
-            fontSize="4xl"
+      <Card.Body textAlign="center" padding="4" display="flex" flexDirection="column" justifyContent="space-between" flex="1">
+        <Flex direction="column" gap={4} alignItems="center">
+          <Heading
+            fontSize={["xl", "2xl", "3xl"]} // Ajustează fontul pentru ecrane mici, medii și mari
             fontFamily="'Poppins', cursive"
-            fontWeight='light'
-            color='gray.600'
-            >{product.title}</Heading>
-            <RenderStar rating={product.rating} />
+            fontWeight="light"
+            color="gray.600"
+            textAlign="center"
+          >
+            {product.title}
+          </Heading>
+          <RenderStar rating={product.rating} />
         </Flex>
+
+        {/* Prețul fixat jos */}
+        <Box>
+          <Text
+            fontSize={["sm", "md", "lg"]}
+            fontFamily="'Poppins', cursive"
+            fontWeight="bold"
+            color="#ff1d25"
+            textAlign="center"
+            letterSpacing='wider'
+          >
+            ${product.price}
+          </Text>
+        </Box>
       </Card.Body>
     </Card.Root>
   );
