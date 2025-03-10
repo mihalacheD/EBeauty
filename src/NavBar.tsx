@@ -4,7 +4,7 @@ import logo from './assets/logo.svg';
 import { Tooltip } from "./components/ui/tooltip"
 import { Flex, Image, Button } from "@chakra-ui/react";
 import { X, Menu, Search, LogIn, Heart, ShoppingCart  } from 'lucide-react';
-import { Link } from "react-router-dom";
+import CategoryList from "./components/CategoryList";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,16 +21,7 @@ const NavBar = () => {
       {/* Desktop Menu */}
       <Flex justify="space-around" display={{ base: "none", xl: "flex" }} paddingX={8} paddingY={4}>
         <Flex gap={6} >
-          <Link to="/">Home</Link>
-          <Link to="/category/fragrances">Fragrances</Link>
-          <Link to="/category/skincare">Skincare</Link>
-          <Link to="/category/mens-shirts">Clothing</Link>
-          <Link to="/category/womens-bags">Bags</Link>
-          <Link to="/category/mens-shoes">Shoes</Link>
-          <Link to="/category/womens-jewellery">Accessories</Link>
-          <Link to="/category/tops">Tops</Link>
-          <Link to="/category/home-decoration">Home Decoration</Link>
-          <Link to="/category/sale">Sale</Link>
+          <CategoryList/>
         </Flex>
         <Flex gap={10} >
           <Tooltip content="Search..." ><Search size={25}/></Tooltip>
@@ -85,22 +76,8 @@ const NavBar = () => {
               transition={{ duration: 0.4 }}
               style={{  padding: "1rem", display: "flex", flexDirection: "column", gap: "1rem" }}
             >
-        <Flex
-          direction="column"
-          paddingX={4}
-          paddingY={6}
-          gap={4}
-        >
-          <Link to="/">Home</Link>
-          <Link to="/category/fragrances">Fragrances</Link>
-          <Link to="/category/skincare">Skincare</Link>
-          <Link to="/category/mens-shirts">Clothing</Link>
-          <Link to="/category/womens-bags">Bags</Link>
-          <Link to="/category/mens-shoes">Shoes</Link>
-          <Link to="/category/womens-jewellery">Accessories</Link>
-          <Link to="/category/tops">Tops</Link>
-          <Link to="/category/home-decoration">Home Decoration</Link>
-          <Link to="/category/sale">Sale</Link>
+        <Flex direction="column" paddingX={4} paddingY={6} gap={4}>
+          <CategoryList/>
         </Flex>
         </motion.div>
       )}
