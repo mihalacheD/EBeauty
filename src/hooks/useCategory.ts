@@ -2,7 +2,7 @@ import axios, { CanceledError } from "axios";
 import { useEffect, useState } from "react";
 
 
-interface Category {
+export interface Category {
   slug: string;
   name: string;
   url: string;
@@ -22,7 +22,6 @@ const useCategory = () => {
         signal: controller.signal,
       })
       .then((res) => {
-        console.log(res.data)
         setCategories(res.data);
         setLoading(false);
       })

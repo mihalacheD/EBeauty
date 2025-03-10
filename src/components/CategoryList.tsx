@@ -28,7 +28,7 @@ const CategoryList = () => {
       <NavLink to="/">Home</NavLink>
 
       {/* Link pentru All */}
-      <NavLink key="all" to="/category/all">
+      <NavLink key="all" to="/all-products">
         {customCategoryNames["all"]}
       </NavLink>
 
