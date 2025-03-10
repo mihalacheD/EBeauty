@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import useCategory from "../hooks/useCategory";
+import { Spinner } from "@chakra-ui/react";
 
 const CategoryList = () => {
 
@@ -19,9 +20,8 @@ const CategoryList = () => {
     "beauty": "Beauty"
   };
 
-
-  if (isLoading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (error) return null;
+  if (isLoading) return <Spinner/>;
 
   return (
     <>
