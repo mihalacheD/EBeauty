@@ -4,8 +4,8 @@ const options = {
   method : 'GET',
   url: `https://dummyjson.com/products`,
   params: {
-    limit: 20,          // Limitează rezultatele la 10 produse
-    skip: 5,            // Sari peste primele 5 produse (pentru paginare)
+    limit: 20,
+    skip: 0,
     select: 'title,price,thumbnail, category' // Alege doar câmpurile dorite
   }
 }

@@ -8,10 +8,11 @@ export interface Product {
   title: string,
   thumbnail: string,
   rating: number,
-  price: number
+  price: number,
+  category: string,
 }
 
-const useProducts = () => {
+const useProducts = (category?: string) => {
   const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState("")
   const [isLoading, setLoading] = useState(false)
@@ -22,7 +23,15 @@ const useProducts = () => {
   setLoading(true)
 
    axios
-     .get(options.url, {params: options.params, signal: controller.signal})
+     .get(
+     category
+     ? `https://dummyjson.com/products/category/${category}`
+     : options.url,
+   {
+     params: options.params,
+     signal: controller.signal,
+   }
+  )
      .then((res) => {
        // Adăugăm un rating aleatoriu fiecărui produs
        const updatedProducts = res.data.products.map((product: Product) => ({
@@ -38,7 +47,7 @@ const useProducts = () => {
         setLoading(false)
       })
         return () => controller.abort()
-  }, [])
+  }, [category])
 
   return { products, error, isLoading}
 }
