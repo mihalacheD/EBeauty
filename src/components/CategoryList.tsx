@@ -10,7 +10,7 @@ const CategoryList = () => {
     "all": "All",
     "fragrances": "Fragrances",
     "skin-care": "Skincare",
-    "mens-shirts": "Clothing",
+    "womens-dresses": "Clothing",
     "womens-bags": "Bags",
     "womens-shoes": "Shoes",
     "womens-jewellery": "Accessories",
