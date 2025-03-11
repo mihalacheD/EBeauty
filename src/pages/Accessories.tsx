@@ -3,8 +3,8 @@ import useProducts from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
 
-const Bags = () => {
-  const { products, error, isLoading } = useProducts("womens-bags");
+const Accessories = () => {
+  const { products, error, isLoading } = useProducts("womens-jewellery");
   const skeleton = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
   return (
@@ -21,4 +21,4 @@ const Bags = () => {
   };
 
 
-export default Bags;
+export default Accessories;

@@ -3,7 +3,7 @@ import useProducts from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
 
-const Clothing = () => {
+const Tops = () => {
   const { products, error, isLoading } = useProducts("tops");
   const skeleton = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -21,4 +21,4 @@ const Clothing = () => {
   };
 
 
-export default Clothing;
+export default Tops;

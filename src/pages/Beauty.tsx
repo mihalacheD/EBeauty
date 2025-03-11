@@ -4,7 +4,7 @@ import useProducts from "../hooks/useProducts";
 import ProductCard from "../components/ProductCard";
 import ProductCardSkeleton from "../components/ProductCardSkeleton";
 
-const BeautyPage = () => {
+const Beauty= () => {
   const { products, error, isLoading } = useProducts("beauty");
   const skeleton = [ 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
@@ -22,4 +22,4 @@ const BeautyPage = () => {
   };
 
 
-export default BeautyPage;
+export default Beauty;
