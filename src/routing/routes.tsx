@@ -8,6 +8,7 @@ import Clothing from "../pages/Clothing";
 import Skincare from "../pages/Skincare";
 import Sunglasses from "../pages/Sunglasses";
 import Tops from "../pages/Tops";
+import Bags from "../pages/Bags";
 
 
 
@@ -24,6 +25,7 @@ const router = createBrowserRouter([
     { path: "category/skin-care", element: <Skincare /> },
     { path: "category/sunglasses", element: <Sunglasses /> },
     { path: "category/tops", element: <Tops /> },
+    { path: "category/womens-bags", element: <Bags /> },
   ]
 }
 ])
