@@ -10,6 +10,10 @@ export interface Product {
   rating: number,
   price: number,
   category: string,
+  brand: string,
+  discountPercentage: number,
+  stock: number,
+  createdAt: Date
 }
 
 const useProducts = (category?: string) => {
