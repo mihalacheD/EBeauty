@@ -10,6 +10,7 @@ import Sunglasses from "../pages/Sunglasses";
 import Tops from "../pages/Tops";
 import Bags from "../pages/Bags";
 import Accessories from "../pages/Accessories";
+import Shoes from "../pages/Shoes";
 
 
 
@@ -28,6 +29,7 @@ const router = createBrowserRouter([
     { path: "category/tops", element: <Tops /> },
     { path: "category/womens-bags", element: <Bags /> },
     { path: "category/womens-jewellery", element: <Accessories /> },
+    { path: "category/womens-shoes", element: <Shoes /> },
   ]
 }
 ])
