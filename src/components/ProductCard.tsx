@@ -2,12 +2,20 @@ import { Badge, Box, Button, Card, Flex, Image, Text } from '@chakra-ui/react'
 import { Product } from '../hooks/useProducts'
 import RenderStar from './RenderStar';
 import ExpandableText from './ExpandableText';
+import { useNavigate } from 'react-router-dom';
+
+
 
 interface Props {
   product: Product
 }
 
 const ProductCard = ({ product }: Props) => {
+
+  const navigate = useNavigate()
+  const handleCardClick = () => {
+    navigate(`/product/${product.id}`)
+  }
 
   const discountedPrice = product.price - (product.price * (product.discountPercentage / 100));
   // Logica pentru a verifica dacă produsul este "NEW" pe baza categoriei
@@ -28,7 +36,8 @@ const ProductCard = ({ product }: Props) => {
       flexDirection="column"
       maxW="sm"
       _hover={{ boxShadow: 'lg' }}
-      position="relative" // Necesită pentru a poziționa badge-ul
+      position="relative"
+      onClick={handleCardClick}
     >
 
 

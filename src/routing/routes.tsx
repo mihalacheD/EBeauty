@@ -12,6 +12,7 @@ import Bags from "../pages/Bags";
 import Accessories from "../pages/Accessories";
 import Shoes from "../pages/Shoes";
 import Watches from "../pages/Watches";
+import ProductDetails from "../pages/ProductDetails";
 
 
 
@@ -32,6 +33,7 @@ const router = createBrowserRouter([
     { path: "category/womens-jewellery", element: <Accessories /> },
     { path: "category/womens-shoes", element: <Shoes /> },
     { path: "category/womens-watches", element: <Watches /> },
+    { path: "/product/:id", element: <ProductDetails />},
   ]
 }
 ])
