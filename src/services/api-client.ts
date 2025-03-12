@@ -6,7 +6,7 @@ const options = {
   params: {
     limit: 20,
     skip: 0,
-    select: 'title,price,thumbnail,category,rating,brand,discountPercentage,createdAt,stock' // Alege doar câmpurile dorite
+    select: 'id,title,price,thumbnail,category,rating,brand,discountPercentage,stock,meta'
   }
 }
 
