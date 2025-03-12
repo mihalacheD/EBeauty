@@ -84,7 +84,7 @@ const ProductCard = ({ product }: Props) => {
       )}
 
 
-      <Card.Body textAlign="center" padding={5}  display="flex" flexDirection="column" justifyContent="space-between" flex="1">
+      <Card.Body textAlign="center" paddingX={5} paddingBottom={5} paddingTop={1} display="flex" flexDirection="column" justifyContent="space-between" flex="1">
         <Flex direction="column" gap={4} alignItems="center">
            <ExpandableText children={product.title}/>
           <RenderStar rating={product.rating} />
