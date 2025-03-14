@@ -1,9 +1,17 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import logo from './assets/logo.svg';
-import { Tooltip } from "./components/ui/tooltip"
-import { Flex, Image, Button } from "@chakra-ui/react";
-import { X, Menu, Search, LogIn, Heart, ShoppingCart  } from 'lucide-react';
+import { motion } from "framer-motion";
+import logo from "./assets/logo.svg";
+import { Tooltip } from "./components/ui/tooltip";
+import {
+  Flex,
+  Image,
+  Button,
+  Drawer,
+  Portal,
+  CloseButton,
+  Text
+} from "@chakra-ui/react";
+import { X, Menu, Search, LogIn, Heart, ShoppingCart } from "lucide-react";
 import CategoryList from "./components/CategoryList";
 
 const NavBar = () => {
@@ -19,69 +27,78 @@ const NavBar = () => {
       </Flex>
 
       {/* Desktop Menu */}
-      <Flex justify="space-around" display={{ base: "none", xl: "flex" }} paddingX={8} paddingY={4}>
-        <Flex gap={6} >
-          <CategoryList/>
+      <Flex
+        justify="space-around"
+        display={{ base: "none", xl: "flex" }}
+        paddingX={8}
+        paddingY={4}
+      >
+        <Flex gap={6}>
+          <CategoryList />
         </Flex>
-        <Flex gap={10} >
-          <Tooltip content="Search..." ><Search size={25}/></Tooltip>
-          <Tooltip content="Log In"><LogIn size={25}/></Tooltip>
-          <Tooltip content="Wishlist"><Heart size={25}/></Tooltip>
-          <Tooltip content="Shopping Bag"><ShoppingCart size={25}/></Tooltip>
+        <Flex gap={10}>
+          <Tooltip content="Search...">
+            <Search size={25} />
+          </Tooltip>
+          <Tooltip content="Log In">
+            <LogIn size={25} />
+          </Tooltip>
+          <Tooltip content="Wishlist">
+            <Heart size={25} />
+          </Tooltip>
+          <Tooltip content="Shopping Bag">
+            <ShoppingCart size={25} />
+          </Tooltip>
         </Flex>
       </Flex>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu Button */}
       <Flex
         justify="space-between"
         align="center"
         display={{ base: "flex", xl: "none" }}
         padding={4}
       >
-
-      <motion.div
-            whileTap={{ scale: 0.9 }}
-            transition={{ duration: 0.3 }}
-          >
-        <Button onClick={toggleMenu} variant="subtle" colorPalette='gray'>
-          {isOpen ? <X size={24} color="black"/> : <Menu size={24} color="black"/>}
-        </Button>
-      </motion.div>
-
-
-      <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.3 }}
-              style={{ display: "flex", gap: "1rem" }}
-            >
-          <Flex gap={6}  display={{ base: isOpen ? "none" : "flex", md: "flex" }}>
-          <Tooltip content="Search..."><Search size={25}/></Tooltip>
-          <Tooltip content="Log In"><LogIn size={25}/></Tooltip>
-          <Tooltip content="Wishlist"><Heart size={25}/></Tooltip>
-          <Tooltip content="Shopping Bag"><ShoppingCart size={25}/></Tooltip>
-          </Flex>
+        <motion.div whileTap={{ scale: 0.9 }} transition={{ duration: 0.3 }}>
+          <Button onClick={toggleMenu} size="xl">
+            {isOpen ? <X /> : <Menu />}
+          </Button>
         </motion.div>
-
       </Flex>
 
-      {/* Burger Menu Dropdown */}
-      <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.4 }}
-              style={{  padding: "1rem", display: "flex", flexDirection: "column", gap: "1rem" }}
-            >
-        <Flex direction="column" paddingX={4} paddingY={6} gap={4}>
-          <CategoryList/>
-        </Flex>
-        </motion.div>
-      )}
-              </AnimatePresence>
+      {/* Mobile Drawer */}
+      <Drawer.Root placement="start" open={isOpen}  onOpenChange={(e) => setIsOpen(e.open)}>
+        <Portal>
+          <Drawer.Backdrop  bg="rgba(0, 0, 0, 0.5)"/>
+          <Drawer.Positioner>
+            <Drawer.Content  bg="white" color="black" pt={5}>
+              <Drawer.Header>
+                <Drawer.Title fontSize="xl" fontWeight='medium'>Menu</Drawer.Title>
+                <Drawer.CloseTrigger asChild>
+                  <CloseButton size="lg" color='black'/>
+                </Drawer.CloseTrigger>
+              </Drawer.Header>
+              <Drawer.Body>
+                <Flex direction="column" gap={4}>
+                  <CategoryList />
+                  <Button bg='#186bd8' color='white'>
+                      <LogIn style={{ height: '25px', width: '25px' }}/>
+                      <Text fontSize="xl" fontWeight='medium'>Log In</Text>
+                  </Button>
+                  <Button bg='#186bd8' color='white'>
+                      <Heart style={{ height: '25px', width: '25px' }} />
+                      <Text fontSize="xl" fontWeight='medium'>Wishlist</Text>
+                  </Button>
+                  <Button bg='#186bd8' color='white'>
+                      <ShoppingCart style={{ height: '25px', width: '25px' }} />
+                      <Text fontSize="xl" fontWeight='medium'>Shopping Bag</Text>
+                  </Button>
+                </Flex>
+              </Drawer.Body>
+            </Drawer.Content>
+          </Drawer.Positioner>
+        </Portal>
+      </Drawer.Root>
     </Flex>
   );
 };

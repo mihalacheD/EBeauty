@@ -57,7 +57,7 @@ const ProductDetailsCard = ({product}: Props) => {
                  <Text fontSize="xl" fontWeight='medium'>Add to cart</Text>
               </Button>
               <Button size='2xl' color='#186bd8' width="100%" variant='outline'>
-                 <Heart size={16} style={{ height: '40px', width: '40px' }}/>
+                 <Heart style={{ height: '40px', width: '40px' }}/>
                  <Text fontSize="xl" fontWeight='medium'>Add to Favourite</Text>
               </Button>
             </Flex>
