@@ -3,6 +3,7 @@ import { Product } from '../hooks/useProducts'
 import RenderStar from './RenderStar';
 import ExpandableText from './ExpandableText';
 import { useNavigate } from 'react-router-dom';
+import { ShoppingCart } from 'lucide-react';
 
 
 
@@ -114,9 +115,9 @@ const ProductCard = ({ product }: Props) => {
 
         {/* Add to cart button */}
         <Box mt={4}>
-            <Button colorScheme="teal" width="full">
-                Add to cart
-             </Button>
+          <Button bg='#186bd8' color='white' width="full">
+            <ShoppingCart size={10}/> Add to cart
+          </Button>
         </Box>
       </Card.Body>
     </Card.Root>
