@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import logo from "./assets/logo.svg";
-import { Tooltip } from "./components/ui/tooltip";
 import {
   Flex,
   Image,
@@ -11,8 +10,9 @@ import {
   CloseButton,
   Text
 } from "@chakra-ui/react";
-import { X, Menu, Search, LogIn, Heart, ShoppingCart } from "lucide-react";
+import { X, Menu, LogIn, Heart, ShoppingCart } from "lucide-react";
 import CategoryList from "./components/CategoryList";
+import NavbarLinks from "./components/NavbarLinks";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -38,20 +38,7 @@ const NavBar = () => {
         <Flex gap={6} >
           <CategoryList />
         </Flex>
-        <Flex gap={10}>
-          <Tooltip content="Search...">
-            <Search size={25} />
-          </Tooltip>
-          <Tooltip content="Log In">
-            <LogIn size={25} />
-          </Tooltip>
-          <Tooltip content="Wishlist">
-            <Heart size={25} />
-          </Tooltip>
-          <Tooltip content="Shopping Bag">
-            <ShoppingCart size={25} />
-          </Tooltip>
-        </Flex>
+        <NavbarLinks/>
       </Flex>
 
       {/* Mobile Menu Button */}
