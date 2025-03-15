@@ -1,10 +1,13 @@
 import { NavLink } from "react-router-dom";
 import useCategory from "../hooks/useCategory";
 import { Spinner } from "@chakra-ui/react";
+import { useLinkStyles } from "../styles/useLinkStyle";
 
 const CategoryList = () => {
 
   const { categories, isLoading, error } = useCategory();
+  const linkStyle = useLinkStyles();
+
 
   const customCategoryNames: { [key: string]: string } = {
     "all": "All",
@@ -25,17 +28,27 @@ const CategoryList = () => {
 
   return (
     <>
-      <NavLink to="/">Home</NavLink>
+      <NavLink
+        to="/"
+        style={({ isActive }) => linkStyle(isActive)}>
+          Home
+      </NavLink>
 
       {/* Link pentru All */}
-      <NavLink key="all" to="/all-products">
+      <NavLink
+        key="all"
+        to="/all-products"
+        style={({ isActive }) => linkStyle(isActive)}>
         {customCategoryNames["all"]}
       </NavLink>
 
       {categories
-          .filter((category) => Object.prototype.hasOwnProperty.call(customCategoryNames, category.slug))
+         .filter((category) => Object.prototype.hasOwnProperty.call(customCategoryNames, category.slug))
          .map((category) => (
-        <NavLink key={category.slug} to={`/category/${category.slug}`}>
+        <NavLink
+           key={category.slug}
+           to={`/category/${category.slug}`}
+           style={({ isActive }) => linkStyle(isActive)}>
           {customCategoryNames[category.slug]}
         </NavLink>
       ))}

@@ -32,8 +32,10 @@ const NavBar = () => {
         display={{ base: "none", xl: "flex" }}
         paddingX={8}
         paddingY={4}
+        bg= 'linear-gradient(to right, #ff1d25,#186bd8)'
+        color='white'
       >
-        <Flex gap={6}>
+        <Flex gap={6} >
           <CategoryList />
         </Flex>
         <Flex gap={10}>
@@ -73,13 +75,12 @@ const NavBar = () => {
           <Drawer.Positioner>
             <Drawer.Content  bg="white" color="black" pt={5}>
               <Drawer.Header>
-                <Drawer.Title fontSize="xl" fontWeight='medium'>Menu</Drawer.Title>
                 <Drawer.CloseTrigger asChild>
                   <CloseButton size="lg" color='black'/>
                 </Drawer.CloseTrigger>
               </Drawer.Header>
               <Drawer.Body>
-                <Flex direction="column" gap={4}>
+                <Flex direction="column" gap={4} >
                   <CategoryList />
                   <Button bg='#186bd8' color='white'>
                       <LogIn style={{ height: '25px', width: '25px' }}/>
