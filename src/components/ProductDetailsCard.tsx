@@ -1,7 +1,7 @@
-import { Card, Button, Flex, Box, Text} from "@chakra-ui/react";
-import { Heart } from "lucide-react";
+import { Card, Flex, Box } from "@chakra-ui/react";
 import { ProductDetails } from "../hooks/useProductDetails";
 import { LargeShoppingButton } from "./buttons/ShoppingButton";
+import { LargeFavouriteButton } from "./buttons/FavouriteButton";
 
 interface Props {
   product: ProductDetails;
@@ -54,10 +54,7 @@ const ProductDetailsCard = ({product}: Props) => {
           <Card.Footer p={4}>
             <Flex direction='column' gap={4} width='full'>
                 <LargeShoppingButton />
-              <Button size='2xl' color='#186bd8' width="100%" variant='outline'>
-                 <Heart style={{ height: '40px', width: '40px' }}/>
-                 <Text fontSize="xl" fontWeight='medium'>Add to Favourite</Text>
-              </Button>
+                <LargeFavouriteButton/>
             </Flex>
           </Card.Footer>
 

@@ -10,10 +10,11 @@ import {
   CloseButton,
   Text
 } from "@chakra-ui/react";
-import { X, Menu, LogIn, Heart } from "lucide-react";
+import { X, Menu, LogIn } from "lucide-react";
 import CategoryList from "./components/CategoryList";
 import NavbarLinks from "./components/NavbarLinks";
 import { SmallShoppingButton } from "./components/buttons/ShoppingButton";
+import { SmallFavouriteButton } from "./components/buttons/FavouriteButton";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,10 +75,7 @@ const NavBar = () => {
                       <LogIn style={{ height: '25px', width: '25px' }}/>
                       <Text fontSize="xl" fontWeight='medium'>Log In</Text>
                   </Button>
-                  <Button bg='#186bd8' color='white'>
-                      <Heart style={{ height: '25px', width: '25px' }} />
-                      <Text fontSize="xl" fontWeight='medium'>Wishlist</Text>
-                  </Button>
+                   <SmallFavouriteButton />
                    <SmallShoppingButton />
                 </Flex>
               </Drawer.Body>
