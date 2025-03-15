@@ -8,13 +8,13 @@ import {
   Drawer,
   Portal,
   CloseButton,
-  Text
 } from "@chakra-ui/react";
-import { X, Menu, LogIn } from "lucide-react";
+import { X, Menu } from "lucide-react";
 import CategoryList from "./components/CategoryList";
 import NavbarLinks from "./components/NavbarLinks";
 import { SmallShoppingButton } from "./components/buttons/ShoppingButton";
 import { SmallFavouriteButton } from "./components/buttons/FavouriteButton";
+import LoginButton from "./components/buttons/LoginButton";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,10 +71,7 @@ const NavBar = () => {
               <Drawer.Body>
                 <Flex direction="column" gap={4} >
                   <CategoryList />
-                  <Button bg='#186bd8' color='white'>
-                      <LogIn style={{ height: '25px', width: '25px' }}/>
-                      <Text fontSize="xl" fontWeight='medium'>Log In</Text>
-                  </Button>
+                   <LoginButton />
                    <SmallFavouriteButton />
                    <SmallShoppingButton />
                 </Flex>
