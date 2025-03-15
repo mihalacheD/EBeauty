@@ -7,16 +7,16 @@ const NavbarLinks = () => {
   return (
     <Flex gap={10} alignItems='center'>
           <Tooltip content="Search...">
-            <Search style={{ height: '35px', width: '35px' }}/>
+            <Search style={{ height: '2em', width: '2em' }}/>
           </Tooltip>
           <Tooltip content="Log In">
-            <LogIn style={{ height: '35px', width: '35px' }} />
+            <LogIn style={{ height: '2em', width: '2em' }} />
           </Tooltip>
           <Tooltip content="Wishlist">
-            <Heart style={{ height: '35px', width: '35px' }} />
+            <Heart style={{ height: '2em', width: '2em' }} />
           </Tooltip>
           <Tooltip content="Shopping Bag">
-            <ShoppingCart style={{ height: '35px', width: '35px' }} />
+            <ShoppingCart style={{ height: '2em', width: '2em' }} />
           </Tooltip>
         </Flex>
   )

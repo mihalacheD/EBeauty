@@ -12,9 +12,6 @@ export const useLinkStyles = () => {
     fontSize: "1.5em",
     fontWeight: "600",
     marginBottom: "8px",
-    _hover: {
-      color: "#606060"
-    }
   });
 
 };

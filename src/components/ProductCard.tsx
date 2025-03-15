@@ -1,9 +1,9 @@
-import { Badge, Box, Button, Card, Flex, Image, Text } from '@chakra-ui/react'
+import { Badge, Box, Card, Flex, Image, Text } from '@chakra-ui/react'
 import { Product } from '../hooks/useProducts'
 import RenderStar from './RenderStar';
 import ExpandableText from './ExpandableText';
 import { useNavigate } from 'react-router-dom';
-import { ShoppingCart } from 'lucide-react';
+import { SmallShoppingButton } from './buttons/ShoppingButton';
 
 
 
@@ -115,9 +115,7 @@ const ProductCard = ({ product }: Props) => {
 
         {/* Add to cart button */}
         <Box mt={4}>
-          <Button bg='#186bd8' color='white' width="full">
-            <ShoppingCart size={10}/> Add to cart
-          </Button>
+            <SmallShoppingButton />
         </Box>
       </Card.Body>
     </Card.Root>
