@@ -42,7 +42,7 @@ const ProductCard = ({ product }: Props) => {
     >
 
 
-       {/* Brand Badge - Top Right */}
+       {/* Brand Badge - Top Left */}
        {product.brand && (
         <Badge
           position="absolute"
@@ -60,6 +60,25 @@ const ProductCard = ({ product }: Props) => {
         </Badge>
       )}
 
+        {/* Badge pentru "NEW" sau "Best Seller" */}
+        {(isNew() || isBestSeller) && (
+        <Badge
+          bg={isNew() ? '#7ecc7e' : '#186bd8'}
+          position="absolute"
+          top="2"
+          right="2"
+          color="white"
+          width='fit-content'
+          px={3}
+          py={2}
+          zIndex="1"
+          fontSize="sm"
+        >
+          {isNew() ? 'NEW' : 'TOP'}
+        </Badge>
+      )}
+
+
       <Image
         src={product.thumbnail}
         alt={product.title}
@@ -69,20 +88,6 @@ const ProductCard = ({ product }: Props) => {
         _hover={{ transform: 'scale(1.1)', transition: '0.3s' }}
       />
 
-            {/* Badge pentru "NEW" sau "Best Seller" */}
-        {(isNew() || isBestSeller) && (
-        <Badge
-          bg={isNew() ? '#7ecc7e' : '#186bd8'}
-          color="white"
-          width='fit-content'
-          px={2}
-          py={1}
-          mx={2}
-          fontSize="sm"
-        >
-          {isNew() ? 'NEW' : 'Best Seller'}
-        </Badge>
-      )}
 
 
       <Card.Body textAlign="center" paddingX={5} paddingBottom={5} paddingTop={1} display="flex" flexDirection="column" justifyContent="space-between" flex="1">

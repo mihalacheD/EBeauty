@@ -31,7 +31,7 @@ const TopProducts = () => {
           }
         },
         {
-          breakpoint: 600,
+          breakpoint: 700,
           settings: {
             slidesToShow: 2,
             slidesToScroll: 2,
@@ -57,7 +57,7 @@ const TopProducts = () => {
        <Container w="100%" my={9}>
       <Slider {...settings}>
         {topRatedProducts.map((product) => (
-          <Box key={product.id} h={{ sm:"350px", md: "550px", lg: "600px"}} p={{ sm: '1', md: "2", lg: '3'}} >
+          <Box key={product.id} h={{ sm:"550px", lg: "600px"}} p={{ sm: '1', md: "2", lg: '3'}} >
             <ProductCard product={product} />
           </Box>
         ))}
