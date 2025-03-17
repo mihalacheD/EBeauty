@@ -27,7 +27,8 @@ const TopProducts = () => {
             slidesToShow: 3,
             slidesToScroll: 3,
             infinite: true,
-            dots: true
+            dots: true,
+            dotsClass: "slick-dots slick-thumb"
           }
         },
         {
@@ -37,6 +38,7 @@ const TopProducts = () => {
             slidesToScroll: 2,
             initialSlide: 2,
             dots: true,
+            dotsClass: "slick-dots slick-thumb"
           }
         },
         {

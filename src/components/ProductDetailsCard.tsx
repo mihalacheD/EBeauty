@@ -43,10 +43,10 @@ const ProductDetailsCard = ({product}: Props) => {
                   Discount: {product.discountPercentage}%
                 </Card.Title>
                 {/* Brand */}
-                <Card.Title fontSize="larger" my={4} color="black">
+                <Card.Title fontSize="larger" my={4} color="gray.600">
                   By: {product.brand}
                 </Card.Title>
-                <Card.Title fontSize="larger"  my={4} color={product.stock >= 10 ? 'black' : "#ff1d25"}>
+                <Card.Title fontSize="larger"  my={4} color={product.stock >= 10 ? 'gray.600' : "#ff1d25"}>
                   Items left: {product.stock}
                 </Card.Title>
           </Card.Body>

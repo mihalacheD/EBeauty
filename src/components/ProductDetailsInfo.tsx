@@ -20,7 +20,7 @@ const ProductDetailsInfo = ({product}: Props) => {
       height="100%"
       >
       {/* Categorie */}
-      <Text fontSize="larger" fontWeight="bold" my={3}>
+      <Text fontSize="larger" fontWeight="bold" my={3} color="gray.600">
         Category: <Badge bg="purple" fontSize="medium" p={2}>
                       {product.category}
                   </Badge>

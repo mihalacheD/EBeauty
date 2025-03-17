@@ -24,10 +24,10 @@ const ProductDetails = () => {
   {product ? (
     <Box maxW="1900px" mx="auto" px={{ base: 2, md: 4 }} mb={10}>
       <Box p={9}>
-        <Text fontSize="4xl" fontWeight="medium" textAlign="center" mb={5}>
+        <Text fontSize="4xl" fontWeight="medium" textAlign="center" mb={5} color="gray.600" >
           {product.title}
         </Text>
-        <Text fontSize="2xl">{product.description}</Text>
+        <Text fontSize="2xl" color="gray.600">{product.description}</Text>
       </Box>
 
       {/* Grid pentru organizarea layout-ului */}
