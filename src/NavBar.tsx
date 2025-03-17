@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import logo from "./assets/logo.svg";
+import logo from "./assets/ebeauty.svg";
 import {
   Flex,
   Image,
@@ -24,8 +24,8 @@ const NavBar = () => {
   return (
     <Flex direction="column" height="auto">
       {/* Logo */}
-      <Flex justify="center" paddingY={6}>
-        <Image src={logo} alt="logo" />
+      <Flex paddingY={6} h='7em' alignContent='flex-start'>
+        <Image src={logo} alt="logo" height="auto"/>
       </Flex>
 
       {/* Desktop Menu */}
@@ -34,7 +34,7 @@ const NavBar = () => {
         display={{ base: "none", xl: "flex" }}
         paddingX={8}
         paddingY={4}
-        bg= 'linear-gradient(to right, #ff1d25,#186bd8)'
+        bg= 'linear-gradient(to right, #186bd8, #ff1d25)'
         color='white'
       >
         <Flex gap={6} >
