@@ -8,6 +8,8 @@ import {
   Drawer,
   Portal,
   CloseButton,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { X, Menu } from "lucide-react";
 import CategoryList from "./components/CategoryList";
@@ -15,6 +17,7 @@ import NavbarLinks from "./components/NavbarLinks";
 import { SmallShoppingButton } from "./components/buttons/ShoppingButton";
 import { SmallFavouriteButton } from "./components/buttons/FavouriteButton";
 import LoginButton from "./components/buttons/LoginButton";
+import SearchInput from "./components/SearchInput";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -23,10 +26,43 @@ const NavBar = () => {
 
   return (
     <Flex direction="column" height="auto">
+      {/* Logo + Search */}
+      <Grid
+          templateColumns={{ base: "1fr", xl: "1fr 2fr" }}
+          gap={6}
+          alignItems="center"
+          my={3}
+        >
+
+         {/* Mobile Menu Button */}
+      <GridItem
+        display={{ base: "flex", xl: "none" }}
+      >
+        <motion.div whileTap={{ scale: 0.9 }} transition={{ duration: 0.3 }}>
+          <Button onClick={toggleMenu} size="2xl">
+            {isOpen ? <X /> : <Menu />}
+          </Button>
+        </motion.div>
+      </GridItem>
+
       {/* Logo */}
-      <Flex paddingY={6} h='7em' alignContent='flex-start'>
-        <Image src={logo} alt="logo" height="auto"/>
-      </Flex>
+          <GridItem
+            boxSize="fit-content"
+            display="flex"
+            justifyContent={{ base: "center", xl: "flex-start" }}
+          >
+            <Image src={logo} alt="logo"/>
+          </GridItem>
+
+      {/* Search Input */}
+          <GridItem
+            width={{ base: "90%", xl: "80%" }}
+            margin={{ base: "auto", xl: "0" }}
+            >
+            <SearchInput />
+          </GridItem>
+        </Grid>
+
 
       {/* Desktop Menu */}
       <Flex
@@ -43,19 +79,6 @@ const NavBar = () => {
         <NavbarLinks/>
       </Flex>
 
-      {/* Mobile Menu Button */}
-      <Flex
-        justify="space-between"
-        align="center"
-        display={{ base: "flex", xl: "none" }}
-        padding={4}
-      >
-        <motion.div whileTap={{ scale: 0.9 }} transition={{ duration: 0.3 }}>
-          <Button onClick={toggleMenu} size="xl">
-            {isOpen ? <X /> : <Menu />}
-          </Button>
-        </motion.div>
-      </Flex>
 
       {/* Mobile Drawer */}
       <Drawer.Root placement="start" open={isOpen}  onOpenChange={(e) => setIsOpen(e.open)}>
