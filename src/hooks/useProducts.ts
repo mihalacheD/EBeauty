@@ -16,7 +16,7 @@ export interface Product {
   createdAt: Date
 }
 
-const useProducts = (category?: string) => {
+const useProducts = (category?: string, searchText?: string) => {
   const [products, setProducts] = useState<Product[]>([])
   const [error, setError] = useState("")
   const [isLoading, setLoading] = useState(false)
@@ -26,16 +26,20 @@ const useProducts = (category?: string) => {
   const controller = new AbortController()
   setLoading(true)
 
+    // 🔹 Construim opțiunile requestului
+    let requestOptions = { ...options, signal: controller.signal };
+
+    if (category) {
+      requestOptions = { ...requestOptions, url: `https://dummyjson.com/products/category/${category}` };
+    }
+
+    if (searchText) {
+      requestOptions = { ...requestOptions, url: `https://dummyjson.com/products/search?q=${searchText}` };
+    }
+
+
    axios
-     .get(
-     category
-     ? `https://dummyjson.com/products/category/${category}`
-     : options.url,
-   {
-     params: options.params,
-     signal: controller.signal,
-   }
-  )
+     .request(requestOptions)
      .then((res) => {
        // Adăugăm un rating aleatoriu fiecărui produs
        const updatedProducts = res.data.products.map((product: Product) => ({
@@ -51,7 +55,7 @@ const useProducts = (category?: string) => {
         setLoading(false)
       })
         return () => controller.abort()
-  }, [category])
+  }, [category, searchText])
 
   return { products, error, isLoading}
 }
