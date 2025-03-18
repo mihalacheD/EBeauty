@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import options from "../services/api-client";
+import ms from "ms";
 
 export interface Product {
   id: number;
@@ -34,6 +35,7 @@ const useProducts = (category?: string, searchText?: string) => {
         rating: Math.floor(Math.random() * 5) + 1, // Adăugăm un rating aleatoriu
       }));
     },
+    staleTime: ms('168h')
   });
 };
 
