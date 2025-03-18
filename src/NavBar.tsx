@@ -20,6 +20,7 @@ import LoginButton from "./components/buttons/LoginButton";
 import SearchInput from "./components/SearchInput";
 import { useContext } from "react";
 import SearchContext from "./state-managment/SearchContext";
+import { Link } from "react-router-dom";
 
 
 const NavBar = () => {
@@ -43,7 +44,7 @@ const NavBar = () => {
 
         {/* Logo */}
         <GridItem boxSize="fit-content" display="flex" justifyContent={{ base: "center", xl: "flex-start" }}>
-          <Image src={logo} alt="logo" />
+          <Link to='/'><Image src={logo} alt="logo" /></Link>
         </GridItem>
 
         {/* Search Input */}
