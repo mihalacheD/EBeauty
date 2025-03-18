@@ -10,8 +10,8 @@ const SearchResults = () => {
   const searchParams = new URLSearchParams(location.search); // Obținem parametrii din URL
   const searchText = searchParams.get("q") || ""; // Extragem valoarea "q" din URL
 
-  const { products, error, isLoading } = useProducts();
-  const filteredProducts = products.filter((product) =>
+  const { data: products, error, isLoading } = useProducts();
+  const filteredProducts = products?.filter((product) =>
     product.title.toLowerCase().includes(searchText.toLowerCase())
   );
 
@@ -19,9 +19,9 @@ const SearchResults = () => {
 
   return (
     <>
-    {error && <p>{error}</p>}
+    {error && <p>{error.message}</p>}
     <Container my={12}>
-      {filteredProducts.length === 0 && !isLoading ? (
+      {filteredProducts?.length === 0 && !isLoading ? (
         <>
         <Text fontSize="2xl" color="gray.500" mx='9'>
             No item found
@@ -33,7 +33,7 @@ const SearchResults = () => {
           {isLoading &&
             skeleton.map((skeleton) => <ProductCardSkeleton key={skeleton} />)}
 
-          {filteredProducts.map((product) => (
+          {filteredProducts?.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </SimpleGrid>

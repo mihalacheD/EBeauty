@@ -8,8 +8,10 @@ import { Box, Container, Text } from "@chakra-ui/react";
 
 const TopProducts = () => {
 
-  const { products } = useProducts();
-  const topRatedProducts = [...products].sort((a, b) => b.rating - a.rating);
+  const { data: products } = useProducts();
+
+  const topRatedProducts = products ? [...products].sort((a, b) => b.rating - a.rating) : [];
+
 
 
 

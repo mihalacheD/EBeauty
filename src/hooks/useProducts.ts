@@ -1,63 +1,40 @@
-import axios, { CanceledError } from "axios"
-import { useState, useEffect } from "react"
-import options from "../services/api-client"
-
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
+import options from "../services/api-client";
 
 export interface Product {
-  id: number,
-  title: string,
-  thumbnail: string,
-  rating: number,
-  price: number,
-  category: string,
-  brand: string,
-  discountPercentage: number,
-  stock: number,
-  createdAt: Date
+  id: number;
+  title: string;
+  thumbnail: string;
+  rating: number;
+  price: number;
+  category: string;
+  brand: string;
+  discountPercentage: number;
+  stock: number;
+  createdAt: Date;
 }
 
 const useProducts = (category?: string, searchText?: string) => {
-  const [products, setProducts] = useState<Product[]>([])
-  const [error, setError] = useState("")
-  const [isLoading, setLoading] = useState(false)
 
-  useEffect(() => {
+  return useQuery<Product[], Error>({
+    queryKey: ["products", category, searchText], // Adăugăm category și searchText pentru a reexecuta request-ul când se schimbă
+    queryFn: async () => {
+      let url = "https://dummyjson.com/products";
+      if (category) {
+        url = `https://dummyjson.com/products/category/${category}`;
+      }
+      if (searchText) {
+        url = `https://dummyjson.com/products/search?q=${searchText}`;
+      }
 
-  const controller = new AbortController()
-  setLoading(true)
-
-    // 🔹 Construim opțiunile requestului
-    let requestOptions = { ...options, signal: controller.signal };
-
-    if (category) {
-      requestOptions = { ...requestOptions, url: `https://dummyjson.com/products/category/${category}` };
-    }
-
-    if (searchText) {
-      requestOptions = { ...requestOptions, url: `https://dummyjson.com/products/search?q=${searchText}` };
-    }
-
-
-   axios
-     .request(requestOptions)
-     .then((res) => {
-       // Adăugăm un rating aleatoriu fiecărui produs
-       const updatedProducts = res.data.products.map((product: Product) => ({
+      const response = await axios.get(url, options);
+      return response.data.products.map((product: Product) => ({
         ...product,
-        rating: Math.floor(Math.random() * 5) + 1, // Rating aleatoriu între 1 și 5
+        rating: Math.floor(Math.random() * 5) + 1, // Adăugăm un rating aleatoriu
       }));
-      setProducts(updatedProducts);
-      setLoading(false)
-    })
-     .catch(error => {
-        if (error instanceof CanceledError) return
-        setError(error.message)
-        setLoading(false)
-      })
-        return () => controller.abort()
-  }, [category, searchText])
-
-  return { products, error, isLoading}
-}
+    },
+  });
+};
 
 export default useProducts;
