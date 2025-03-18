@@ -5,7 +5,7 @@ import { useLinkStyles } from "../styles/useLinkStyle";
 
 const CategoryList = () => {
 
-  const { categories, isLoading, error } = useCategory();
+  const { data: categories, isLoading, error } = useCategory();
   const linkStyle = useLinkStyles();
 
 
@@ -42,16 +42,15 @@ const CategoryList = () => {
         {customCategoryNames["all"]}
       </NavLink>
 
-      {categories
-         .filter((category) => Object.prototype.hasOwnProperty.call(customCategoryNames, category.slug))
-         .map((category) => (
-        <NavLink
-           key={category.slug}
-           to={`/category/${category.slug}`}
-           style={({ isActive }) => linkStyle(isActive)}>
-          {customCategoryNames[category.slug]}
-        </NavLink>
-      ))}
+      {categories?.filter((category) => customCategoryNames[category.slug])  // Verifică dacă slug-ul este valid în customCategoryNames
+                  .map((category) => (
+                    <NavLink
+                      key={category.slug}
+                      to={`/category/${category.slug}`}
+                      style={({ isActive }) => linkStyle(isActive)}>
+                      {customCategoryNames[category.slug]}  {/* Afișează numele din customCategoryNames */}
+                    </NavLink>
+         ))}
     </>
   );
 };
