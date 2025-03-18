@@ -1,5 +1,5 @@
-import axios, { CanceledError } from "axios";
-import { useEffect, useState } from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 import options from "../services/api-client";
 
 export interface ProductDetails {
@@ -40,35 +40,16 @@ export interface Review {
   reviewerEmail: string;
 }
 
-
-const useProductDetails = (productId: number) => {
-
-  const [product, setProduct] = useState<ProductDetails | null>(null)
-  const [error, setError] = useState("")
-  const [isLoading, setLoading] = useState(false)
-
-  useEffect(() => {
-
-    if (!productId) return; // Nu face request dacă productId nu e valid
-
-  const controller = new AbortController()
-  setLoading(true)
-
-  axios
-     .get(`${options.url}/${productId}`, { params: options.params, signal: controller.signal })
-     .then((res) => {
-      setProduct(res.data || null);
-      setLoading(false)
-    })
-     .catch(error => {
-        if (error instanceof CanceledError) return
-        setError(error.message || "Failed to fetch product details.");
-        setLoading(false)
-      })
-        return () => controller.abort()
-  }, [productId])
-
-  return { product, error, isLoading}
-}
+const useProductDetails = (productId?: number) => {
+  return useQuery<ProductDetails | null>({
+    queryKey: ["productDetails", productId], // 🔹 Adăugăm productId în queryKey
+    queryFn: async () => {
+      if (!productId) return null; // 🔹 Oprim request-ul dacă nu există productId
+      const response = await axios.get(`${options.url}/${productId}`, { params: options.params });
+      return response.data || null;
+    },
+    retry: 3
+  });
+};
 
 export default useProductDetails;

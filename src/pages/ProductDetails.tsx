@@ -11,11 +11,11 @@ const ProductDetails = () => {
 
   const { id } = useParams<{id: string}>()
   const productId = Number(id)
-  const { product, error, isLoading} = useProductDetails(productId)
+  const { data: product, error, isLoading} = useProductDetails(productId)
 
 
   if (isLoading) return <Spinner/>
-  if (error) return <Text color="red.500">Error: {error}</Text>;
+  if (error) return <Text color="red.500">Error: {error.message}</Text>;
 
 
 
