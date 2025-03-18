@@ -14,6 +14,7 @@ import Shoes from "../pages/Shoes";
 import Watches from "../pages/Watches";
 import ProductDetails from "../pages/ProductDetails";
 import SearchResults from "../pages/SearchResults";
+import ErrorPage from "./ErrorPage";
 
 
 
@@ -21,6 +22,7 @@ import SearchResults from "../pages/SearchResults";
 
 const router = createBrowserRouter([
   { path: '/', element: <Layout/>,
+    errorElement: <ErrorPage />,
   children: [
     {index: true, element: <HomePage/>},
     { path: 'all-products', element: <AllProducts /> },
