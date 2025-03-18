@@ -5,13 +5,18 @@ import { createRoot } from 'react-dom/client'
 import '../src/styles/index.css'
 import { RouterProvider } from 'react-router-dom'
 import router from './routing/routes.tsx'
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+
+const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <ChakraProvider value={defaultSystem}>
-    <ThemeProvider attribute="class" disableTransitionOnChange>
-      <RouterProvider router={router}/>
-    </ThemeProvider>
-    </ChakraProvider>
+    <QueryClientProvider client={queryClient}>
+      <ChakraProvider value={defaultSystem}>
+      <ThemeProvider attribute="class" disableTransitionOnChange>
+        <RouterProvider router={router}/>
+      </ThemeProvider>
+      </ChakraProvider>
+    </QueryClientProvider>
   </StrictMode>,
 )
