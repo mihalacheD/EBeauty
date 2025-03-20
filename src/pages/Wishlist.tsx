@@ -4,6 +4,7 @@ import useWishlistProducts from "../hooks/useWishlistProducts";
 import { useContext } from "react";
 import WishlistContext from "../state-managment/WishlistContext";
 import { Product } from "../hooks/useProducts";
+import EmptyWishlist from "../components/EmptyWishlist";
 
 const Wishlist = () => {
   const wishlistContext = useContext(WishlistContext);
@@ -25,7 +26,7 @@ const Wishlist = () => {
     <Container my={9}>
       <Text fontSize="2xl" fontWeight="bold" color='gray.600'>Favourite Products</Text>
       {products.length === 0 ? (
-        <Text mt={4}>Your wishlist is empty.</Text>
+        <EmptyWishlist/>
       ) : (
         <Flex wrap="wrap" gap={6} mt={4}>
           {products.map((product) => (
