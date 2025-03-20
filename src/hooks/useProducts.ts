@@ -4,6 +4,7 @@ import options from "../services/api-client";
 import ms from "ms";
 
 export interface Product {
+  shippingInformation?: string,
   id: number;
   title: string;
   thumbnail: string;

@@ -2,6 +2,8 @@ import { Card, Flex, Box } from "@chakra-ui/react";
 import { ProductDetails } from "../hooks/useProductDetails";
 import { LargeShoppingButton } from "./buttons/ShoppingButton";
 import { LargeFavouriteButton } from "./buttons/FavouriteButton";
+import { calculateDiscountedPrice } from "../utils/calculateDiscountedPrice";
+
 
 interface Props {
   product: ProductDetails;
@@ -11,9 +13,7 @@ const ProductDetailsCard = ({product}: Props) => {
 
   if (!product) return null;
 
-  const discountedPrice = product
-  ? product.price - (product.price * (product.discountPercentage / 100))
-  : 0;
+  const discountedPrice = calculateDiscountedPrice(product.price, product.discountPercentage);
 
   return (
         <Box textAlign={{ sm: "center", md: "left" }} >
@@ -54,7 +54,7 @@ const ProductDetailsCard = ({product}: Props) => {
           <Card.Footer p={4}>
             <Flex direction='column' gap={4} width='full'>
                 <LargeShoppingButton />
-                <LargeFavouriteButton/>
+                <LargeFavouriteButton productId={product.id}/>
             </Flex>
           </Card.Footer>
 

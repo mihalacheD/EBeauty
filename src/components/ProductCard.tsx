@@ -4,6 +4,7 @@ import RenderStar from './RenderStar';
 import ExpandableText from './ExpandableText';
 import { useNavigate } from 'react-router-dom';
 import { SmallShoppingButton } from './buttons/ShoppingButton';
+import { calculateDiscountedPrice } from '../utils/calculateDiscountedPrice';
 
 
 
@@ -18,7 +19,7 @@ const ProductCard = ({ product }: Props) => {
     navigate(`/product/${product.id}`)
   }
 
-  const discountedPrice = product.price - (product.price * (product.discountPercentage / 100));
+  const discountedPrice = calculateDiscountedPrice(product.price, product.discountPercentage);
   // Logica pentru a verifica dacă produsul este "NEW" pe baza categoriei
   const isNew = () => {
     const newCategories = ["beauty", "bags", "fashion"]; // Lista de categorii considerate "noi"

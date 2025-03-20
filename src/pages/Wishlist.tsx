@@ -1,11 +1,40 @@
-
+import { Container, Flex, Spinner, Text } from "@chakra-ui/react";
+import WishlistProductCard from "../components/WishlistProductCard";
+import useWishlistProducts from "../hooks/useWishlistProducts";
+import { useContext } from "react";
+import WishlistContext from "../state-managment/WishlistContext";
+import { Product } from "../hooks/useProducts";
 
 const Wishlist = () => {
-  return (
-    <div>
-      Wishlist
-    </div>
-  )
-}
+  const wishlistContext = useContext(WishlistContext);
 
-export default Wishlist
+  // Apelăm useWishlistProducts întotdeauna, chiar dacă wishlistContext este null
+  const queries = useWishlistProducts(wishlistContext?.wishlist || []);
+
+  // Verificăm dacă datele sunt încărcate
+  const isLoading = queries.some((query) => query.isLoading);
+
+  // Extragem datele produselor, filtrăm valorile `undefined`
+  const products = queries
+    .map((query) => query.data)
+    .filter((product): product is Product => product !== undefined); // Filtrăm valorile `undefined`
+
+  if (isLoading) return <Spinner />;
+
+  return (
+    <Container my={9}>
+      <Text fontSize="2xl" fontWeight="bold" color='gray.600'>Favourite Products</Text>
+      {products.length === 0 ? (
+        <Text mt={4}>Your wishlist is empty.</Text>
+      ) : (
+        <Flex wrap="wrap" gap={6} mt={4}>
+          {products.map((product) => (
+            <WishlistProductCard key={product?.id} product={product} />
+          ))}
+        </Flex>
+      )}
+    </Container>
+  );
+};
+
+export default Wishlist;
