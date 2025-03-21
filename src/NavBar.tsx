@@ -76,7 +76,7 @@ const NavBar = () => {
                 <Flex direction="column" gap={4}>
                   <CategoryList />
                   <LoginButton />
-                  <SmallFavouriteButton />
+                  <SmallFavouriteButton productId={0} />
                   <SmallShoppingButton />
                 </Flex>
               </Drawer.Body>

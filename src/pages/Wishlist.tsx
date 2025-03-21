@@ -24,7 +24,9 @@ const Wishlist = () => {
 
   return (
     <Container my={9}>
-      <Text fontSize="2xl" fontWeight="bold" color='gray.600'>Favourite Products</Text>
+      <Text fontSize="2xl" fontWeight="bold" color="gray.600">
+          Favourite Products ({products.length} {products.length === 1 ? "item" : "items"})
+      </Text>
       {products.length === 0 ? (
         <EmptyWishlist/>
       ) : (
