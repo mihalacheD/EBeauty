@@ -36,7 +36,7 @@ const NavBar = () => {
         {/* Mobile Menu Button */}
         <GridItem display={{ base: "flex", xl: "none" }}>
           <motion.div whileTap={{ scale: 0.9 }} transition={{ duration: 0.3 }}>
-            <Button onClick={toggleMenu} size="2xl">
+            <Button onClick={toggleMenu} size="2xl" color='black'>
               {isOpen ? <X /> : <Menu />}
             </Button>
           </motion.div>

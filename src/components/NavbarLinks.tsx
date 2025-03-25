@@ -39,9 +39,10 @@ const NavbarLinks = () => {
         </Box>
       </Link>
 
-          <Tooltip content="Shopping Bag">
+               {/* Cart NavLink */}
+          <Link to= '/cart'>
             <ShoppingCart style={{ height: '2em', width: '2em' }} />
-          </Tooltip>
+          </Link>
         </Flex>
   )
 }
