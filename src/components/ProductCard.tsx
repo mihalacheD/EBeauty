@@ -121,7 +121,7 @@ const ProductCard = ({ product }: Props) => {
 
         {/* Add to cart button */}
         <Box mt={4}>
-            <SmallShoppingButton />
+            <SmallShoppingButton product={product} />
         </Box>
       </Card.Body>
     </Card.Root>

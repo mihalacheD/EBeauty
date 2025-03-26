@@ -3,6 +3,7 @@ import NavBar from "../NavBar"
 import SearchContext from "../state-managment/SearchContext"
 import { useEffect, useState } from "react";
 import WishlistContext from "../state-managment/WishlistContext";
+import { CartProvider } from "../state-managment/CartProvider";
 
 
 const Layout = () => {
@@ -19,12 +20,14 @@ const Layout = () => {
 
 
   return (
-  <WishlistContext.Provider value={{ wishlist, setWishlist}}>
-    <SearchContext.Provider value={{ searchText, setSearchText }}>
-      <NavBar/>
-      <Outlet/>
-    </SearchContext.Provider>
-  </WishlistContext.Provider>
+    <CartProvider>
+      <WishlistContext.Provider value={{ wishlist, setWishlist}}>
+        <SearchContext.Provider value={{ searchText, setSearchText }}>
+          <NavBar/>
+          <Outlet/>
+        </SearchContext.Provider>
+      </WishlistContext.Provider>
+    </CartProvider>
   )
 }
 

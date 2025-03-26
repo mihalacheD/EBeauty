@@ -4,6 +4,7 @@ import logo from "./assets/ebeauty.svg";
 import {
   Flex,
   Image,
+  Text,
   Button,
   Drawer,
   Portal,
@@ -11,10 +12,9 @@ import {
   Grid,
   GridItem,
 } from "@chakra-ui/react";
-import { X, Menu } from "lucide-react";
+import { X, Menu, ShoppingCart } from "lucide-react";
 import CategoryList from "./components/CategoryList";
 import NavbarLinks from "./components/NavbarLinks";
-import { SmallShoppingButton } from "./components/buttons/ShoppingButton";
 import { SmallFavouriteButton } from "./components/buttons/FavouriteButton";
 import LoginButton from "./components/buttons/LoginButton";
 import SearchInput from "./components/SearchInput";
@@ -77,7 +77,12 @@ const NavBar = () => {
                   <CategoryList />
                   <LoginButton />
                   <SmallFavouriteButton productId={0} />
-                  <SmallShoppingButton />
+                  <Link to= '/cart'>
+                    <Button bg='#186bd8' color='white' width="full">
+                    <ShoppingCart style={{ height: '1.8em', width: '1.8em' }}/>
+                    <Text fontSize="xl" fontWeight='medium'>Cart</Text>
+                    </Button>
+                  </Link>
                 </Flex>
               </Drawer.Body>
             </Drawer.Content>

@@ -53,7 +53,7 @@ const ProductDetailsCard = ({product}: Props) => {
 
           <Card.Footer p={4}>
             <Flex direction='column' gap={4} width='full'>
-                <LargeShoppingButton />
+                <LargeShoppingButton product={product}/>
                 <LargeFavouriteButton productId={product.id}/>
             </Flex>
           </Card.Footer>

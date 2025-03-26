@@ -2,20 +2,39 @@ import axios from "axios";
 import { useQuery } from "@tanstack/react-query";
 import options from "../services/api-client";
 import ms from "ms";
+import { Review } from "./useProductDetails";
 
+// Extindem Product pentru a include toate câmpurile necesare
 export interface Product {
-  shippingInformation?: string,
   id: number;
   title: string;
+  description: string;
   thumbnail: string;
+  images: string[];
   rating: number;
   price: number;
+  discountPercentage: number;
   category: string;
   brand: string;
-  discountPercentage: number;
   stock: number;
-  createdAt: Date;
+  tags: string[];
+  sku: string;
+  weight: number;
+  dimensions: {
+    width: number;
+    height: number;
+    depth: number;
+  };
+  warrantyInformation: string;
+  shippingInformation: string;
+  availabilityStatus: string;
+  reviews: Review[];
+  returnPolicy: string;
+  minimumOrderQuantity: number;
+  createdAt: string;
+  updatedAt: string;
 }
+
 
 const useProducts = (category?: string, searchText?: string) => {
 

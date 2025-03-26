@@ -1,15 +1,29 @@
 import { Button, Text} from "@chakra-ui/react"
 import { ShoppingCart } from "lucide-react"
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { Product } from "../../hooks/useProducts";
+import { useCart } from "../../hooks/useCart";
 
 
-export const LargeShoppingButton = () => {
+interface Props {
+  product: Product;
+}
+
+export const LargeShoppingButton = ({ product }: Props) => {
+  const { addToCart } = useCart();
   const navigate = useNavigate();
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart(product);
+    navigate("/cart");
+  };
+
 
   return (
       <Button
          size='2xl' bg='#186bd8' color='white' width="100%"
-         onClick={(e) => {e.stopPropagation(); navigate('/cart')}}>
+         onClick={handleAddToCart}>
         <ShoppingCart style={{ height: '3em', width: '3em' }}/>
         <Text fontSize="xl" fontWeight='medium'>Add to cart</Text>
       </Button>
@@ -17,18 +31,23 @@ export const LargeShoppingButton = () => {
         );
       };
 
- export const SmallShoppingButton = () => {
+ export const SmallShoppingButton = ({ product }: Props) => {
+  const { addToCart } = useCart();
   const navigate = useNavigate();
 
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    addToCart(product);
+    navigate("/cart");
+  };
+
   return (
-    <Link to='/cart'>
       <Button
          bg='#186bd8' color='white' width="full"
-         onClick={(e) => {e.stopPropagation(); navigate('/cart')}}>
+         onClick={handleAddToCart}>
         <ShoppingCart style={{ height: '1.8em', width: '1.8em' }}/>
          <Text fontSize="xl" fontWeight='medium'>Add to cart</Text>
       </Button>
-    </Link>
   );
 };
 
