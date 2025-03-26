@@ -1,9 +1,18 @@
-import { ReactNode, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 import { Product } from "../hooks/useProducts";
 import CartContext, { CartItem } from "./CartContext";
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => {
+    // 🔹 Încărcăm coșul din localStorage la inițializare
+    const savedCart = localStorage.getItem("cart");
+    return savedCart ? JSON.parse(savedCart) : [];
+  });
+
+  // 🔹 Salvăm coșul în localStorage ori de câte ori se modifică
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
 
   const addToCart = (product: Product) => {
 
