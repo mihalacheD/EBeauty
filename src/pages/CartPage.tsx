@@ -1,6 +1,7 @@
 import { Text, Container, Flex } from "@chakra-ui/react";
 import CartCard from "../components/CartCard";
 import { useCart } from "../hooks/useCart";
+import CartSummary from "../components/CartSummary";
 
 const CartPage = () => {
   const { cart } = useCart();
@@ -18,6 +19,7 @@ const CartPage = () => {
           {cart.map((item) => (
             <CartCard key={item.product.id} item={item} />
           ))}
+            <CartSummary />
         </Flex>
       )}
     </Container>

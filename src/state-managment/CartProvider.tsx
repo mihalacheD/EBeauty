@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Product } from "../hooks/useProducts";
 import CartContext, { CartItem } from "./CartContext";
+import { calculateDiscountedPrice } from "../utils/calculateDiscountedPrice";
 
 export const CartProvider = ({ children }: { children: ReactNode }) => {
   const [cart, setCart] = useState<CartItem[]>(() => {
@@ -41,7 +42,11 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
-  const total = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
+  const total = cart.reduce(
+    (acc, item) => acc + calculateDiscountedPrice(item.product.price, item.product.discountPercentage) * item.quantity,
+    0
+  );
+
 
   return (
     <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, total }}>
