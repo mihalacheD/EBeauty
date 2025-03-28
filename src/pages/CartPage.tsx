@@ -8,7 +8,9 @@ const CartPage = () => {
 
   return (
     <Container my={9}>
-      <Text fontSize="2xl" fontWeight="bold" mb={4} color="gray.600">Shopping Cart</Text>
+      <Text fontSize="2xl" fontWeight="bold" mb={4} color="gray.600">
+          Shopping Cart ({cart.length} {cart.length === 1 ? "item" : "items"})
+      </Text>
       {cart.length === 0 ? (
         <Text color="gray.500">Your cart is empty.</Text>
       ) : (

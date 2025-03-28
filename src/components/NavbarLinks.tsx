@@ -4,12 +4,17 @@ import { LogIn, Heart, ShoppingCart } from "lucide-react"
 import { Link } from "react-router-dom";
 import WishlistContext from "../state-managment/WishlistContext";
 import { useContext } from "react";
+import { useCart } from "../hooks/useCart";
 
 
 const NavbarLinks = () => {
 
   const wishlistContext = useContext(WishlistContext);
   const wishlistCount = wishlistContext?.wishlist.length || 0;
+
+  const { cart } = useCart();
+  const cartCount = cart.reduce((total, item) => total + item.quantity, 0); // Calculăm totalul produselor
+
 
   return (
     <Flex gap={10} alignItems='center'>
@@ -39,10 +44,28 @@ const NavbarLinks = () => {
         </Box>
       </Link>
 
-               {/* Cart NavLink */}
-          <Link to= '/cart'>
-            <ShoppingCart style={{ height: '2em', width: '2em' }} />
-          </Link>
+        {/* Cart NavLink */}
+      <Link to="/cart" style={{ position: "relative" }}>
+        <Box display="flex" alignItems="center">
+          <ShoppingCart style={{ height: "2em", width: "2em" }} />
+          {cartCount > 0 && (
+            <Badge
+              position="absolute"
+              top="-5px"
+              right="-10px"
+              bg="white"
+              color="red"
+              fontSize="0.8rem"
+              borderRadius="full"
+              fontWeight="bold"
+              px={2}
+            >
+              {cartCount}
+            </Badge>
+          )}
+        </Box>
+      </Link>
+
         </Flex>
   )
 }
