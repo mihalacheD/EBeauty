@@ -78,7 +78,7 @@ const WishlistProductCard: React.FC<WishlistProductCardProps> = ({ product }) =>
                     ${product.price.toFixed(2)}
                   </Box>
                 )}
-                <Box fontSize="2xl" fontWeight="bold" color="red.500">
+                <Box fontSize="xl" fontWeight="bold" color="red.500">
                   ${discountedPrice.toFixed(2)}
                 </Box>
               </Box>
@@ -96,7 +96,7 @@ const WishlistProductCard: React.FC<WishlistProductCardProps> = ({ product }) =>
         {/* Buttons Section */}
         <Box display="flex" flexDirection="column" gap={3}>
           <RemoveButton onRemove={removeFromWishlist} />
-          <SmallShoppingButton />
+          <SmallShoppingButton product={product} />
         </Box>
       </Flex>
     </Card.Root>

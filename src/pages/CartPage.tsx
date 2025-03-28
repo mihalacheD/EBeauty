@@ -1,35 +1,24 @@
+import { Text, Container, Flex } from "@chakra-ui/react";
+import CartCard from "../components/CartCard";
 import { useCart } from "../hooks/useCart";
 
-
 const CartPage = () => {
-  const { cart, removeFromCart, updateQuantity, total } = useCart(); // Preiei datele din context
+  const { cart } = useCart();
+
 
   return (
-    <div>
-      <h2>Your Cart</h2>
+    <Container my={9}>
+      <Text fontSize="2xl" fontWeight="bold" mb={4} color="gray.600">Shopping Cart</Text>
       {cart.length === 0 ? (
-        <p>Your cart is empty</p>
+        <Text color="gray.500">Your cart is empty.</Text>
       ) : (
-        cart.map((item) => (
-          <div key={item.product.id}>
-            <h3>{item.product.title}</h3>
-            <p>Price: ${item.product.price}</p>
-            <p>Quantity: {item.quantity}</p>
-            <button onClick={() => removeFromCart(item.product.id)}>Remove</button>
-            <button onClick={() => updateQuantity(item.product.id, item.quantity + 1)}>
-              Increase Quantity
-            </button>
-            <button onClick={() => updateQuantity(item.product.id, item.quantity - 1)}>
-              Decrease Quantity
-            </button>
-          </div>
-        ))
+        <Flex wrap="wrap" gap={6} mt={4}>
+          {cart.map((item) => (
+            <CartCard key={item.product.id} item={item} />
+          ))}
+        </Flex>
       )}
-      <div>
-        <h3>Total: ${total}</h3>
-        <button>Proceed to Checkout</button>
-      </div>
-    </div>
+    </Container>
   );
 };
 
