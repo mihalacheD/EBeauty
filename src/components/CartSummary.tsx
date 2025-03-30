@@ -1,6 +1,7 @@
 
 import { Box, Button, Flex, Text } from "@chakra-ui/react";
 import { useCart } from "../hooks/useCart";
+import { Link } from "react-router-dom";
 
 const CartSummary = () => {
   const { cart, total } = useCart();
@@ -38,9 +39,11 @@ const CartSummary = () => {
         <Text fontSize="lg" fontWeight="bold">${finalTotal.toFixed(2)}</Text>
       </Flex>
 
+      <Link to="/checkout">
       <Button bg='#186bd8' color='white' size="lg" width="100%" disabled={cart.length === 0}>
         <Text fontSize="xl" fontWeight='medium'>Continue to Checkout</Text>
       </Button>
+      </Link>
     </Box>
   );
 };

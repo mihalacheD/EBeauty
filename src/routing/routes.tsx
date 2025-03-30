@@ -17,6 +17,7 @@ import SearchResults from "../pages/SearchResults";
 import ErrorPage from "./ErrorPage";
 import Wishlist from "../pages/Wishlist";
 import CartPage from "../pages/CartPage";
+import Checkout from "../pages/Checkout";
 
 
 
@@ -42,6 +43,7 @@ const router = createBrowserRouter([
     { path: "/search-results", element: <SearchResults />},
     { path: "/wishlist", element: <Wishlist />},
     { path: "/cart", element: <CartPage />},
+    { path: "/checkout", element: <Checkout />},
   ]
 }
 ])
