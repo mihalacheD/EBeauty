@@ -42,6 +42,10 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
     );
   };
 
+  const clearCart = () => {
+    setCart([]);
+  }
+
   const total = cart.reduce(
     (acc, item) => acc + calculateDiscountedPrice(item.product.price, item.product.discountPercentage) * item.quantity,
     0
@@ -49,7 +53,7 @@ export const CartProvider = ({ children }: { children: ReactNode }) => {
 
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, total }}>
+    <CartContext.Provider value={{ cart, addToCart, removeFromCart, updateQuantity, clearCart, total }}>
       {children}
     </CartContext.Provider>
   )

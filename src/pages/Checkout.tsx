@@ -4,6 +4,7 @@ import { MdCheckCircle } from "react-icons/md";
 import { useCart } from "../hooks/useCart";
 import { Field } from "@chakra-ui/react";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface CheckoutFormData {
   name: string;
@@ -17,17 +18,23 @@ interface CheckoutFormData {
 }
 
 const Checkout = () => {
-  const { total } = useCart();
+  const { total, clearCart } = useCart();
   const { control,register, handleSubmit, formState: { errors, isValid } } = useForm<CheckoutFormData>({ mode: "onChange" });
   const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const navigate = useNavigate();
 
   const onSubmit = (data: CheckoutFormData) => {
-    if (isValid) {
       console.log("Order placed:", data);
       setIsDialogOpen(true);
-    } else {
-      console.log("Form is invalid");
-    }
+
+       // Golim coșul de cumpărături
+       clearCart();
+
+      // Redirecționăm utilizatorul către o pagină de confirmare după 2 secunde
+    setTimeout(() => {
+      navigate("/cart");
+    }, 3000);
+
   };
 
   // Calcul Order Summary
@@ -145,3 +152,4 @@ const Checkout = () => {
 };
 
 export default Checkout;
+
