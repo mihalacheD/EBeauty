@@ -1,10 +1,10 @@
-import { Badge, Box, Flex } from "@chakra-ui/react"
-import { Tooltip } from "../components/ui/tooltip";
-import { LogIn, Heart, ShoppingCart } from "lucide-react"
+import { Badge, Box, Flex  } from "@chakra-ui/react"
+import { Heart, ShoppingCart } from "lucide-react"
 import { Link } from "react-router-dom";
 import WishlistContext from "../state-managment/WishlistContext";
 import { useContext } from "react";
 import { useCart } from "../hooks/useCart";
+import Login from "./Login";
 
 
 const NavbarLinks = () => {
@@ -18,9 +18,9 @@ const NavbarLinks = () => {
 
   return (
     <Flex gap={10} alignItems='center'>
-          <Tooltip content="Log In">
-            <LogIn style={{ height: '2em', width: '2em' }} />
-          </Tooltip>
+
+      {/* Login NavLink */}
+      <Login/>
 
               {/* Wishlist NavLink */}
       <Link to="/wishlist" style={{ position: "relative" }}>
