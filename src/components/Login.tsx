@@ -1,57 +1,12 @@
-import { useEffect, useState } from "react";
 import { Box, Button, Avatar, Text, Icon } from "@chakra-ui/react";
-import {CredentialResponse, GoogleLogin } from "@react-oauth/google";
+import { GoogleLogin } from "@react-oauth/google";
 import { FaUser } from 'react-icons/fa'; // Icon pentru utilizator
-import { useAuth } from "../hooks/useAuth";
-import { jwtDecode } from "jwt-decode";
-
+import { useAuthHandlers } from "../hooks/useAuthHandlers";
 
 
 const Login = () => {
-  const { user, dispatch } = useAuth();
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
-  useEffect(() => {
-    const storedUser = localStorage.getItem("user");
-    if (storedUser) {
-      dispatch({ type: "LOGIN", payload: JSON.parse(storedUser) });
-      setIsLoggedIn(true);
-    }
-  }, [dispatch]);
-
-
-  const handleLoginSuccess = (credentialResponse: CredentialResponse) => {
-    if (credentialResponse.credential) {
-      const decoded = jwtDecode<{ name: string; email: string; picture: string }>(
-        credentialResponse.credential
-      );
-
-      const userData = {
-        name: decoded.name,
-        email: decoded.email,
-        picture: decoded.picture,
-      };
-
-      localStorage.setItem("user", JSON.stringify(userData));
-
-      dispatch({ type: "LOGIN", payload: userData });
-      setIsLoggedIn(true);
-    }
-  };
-
-
-
-  const handleLoginFailure = () => {
-    console.log("Autentificare eșuată");
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem("user");
-    dispatch({ type: "LOGOUT" });
-    setIsLoggedIn(false);
-  };
-
+  const { user, isLoggedIn, handleLoginSuccess, handleLogout, handleLoginFailure  } = useAuthHandlers();
 
   return (
     <Box display="flex" alignItems="center" gap={3}>
