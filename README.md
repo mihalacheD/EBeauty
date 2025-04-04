@@ -1,8 +1,12 @@
 # EBeauty 💄
 
-## 🚨 Disclaimer
+## 📌 Disclaimer
 
-This project is **inspired by eMAG** and built solely for **educational and personal learning purposes**.
+**EN:**
+This project is inspired by the design of the eMAG platform and is intended solely for educational and non-commercial use.
+
+**RO:**
+Acest proiect este inspirat din designul platformei eMAG și este realizat exclusiv în scop educațional și necomercial.
 
 A modern, responsive e-commerce front-end built with **React**, **Chakra UI**, and **TypeScript**.
 

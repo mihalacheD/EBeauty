@@ -18,7 +18,12 @@ const HomePage = () => {
       <GridItem colSpan={1} w="100%">
         <Box w="100%" h="300px" bgColor="gray.100">
         <Text fontSize="lg" color="gray.500" mt={2} textAlign="center">
-          *Inspirat din designul platformei eMAG, realizat în scop educațional, demonstrativ.
+           *Disclaimer: This project is inspired by the design of the eMAG platform and is intended
+           solely for educational and non-commercial use.
+        </Text>
+        <Text fontSize="lg" color="gray.500" mt={2} textAlign="center">
+          *Disclaimer: Acest proiect este inspirat din designul platformei eMAG și este realizat exclusiv
+           în scop educațional și necomercial.
         </Text>
         </Box>
       </GridItem>
