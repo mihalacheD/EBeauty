@@ -1,4 +1,4 @@
-import { Grid, GridItem, Box } from "@chakra-ui/react";
+import { Grid, GridItem, Box, Text } from "@chakra-ui/react";
 import TopProducts from "../components/TopProducts";
 
 const HomePage = () => {
@@ -17,7 +17,9 @@ const HomePage = () => {
 
       <GridItem colSpan={1} w="100%">
         <Box w="100%" h="300px" bgColor="gray.100">
-          {/* Alt conținut */}
+        <Text fontSize="lg" color="gray.500" mt={2} textAlign="center">
+          *Inspirat din designul platformei eMAG, realizat în scop educațional, demonstrativ.
+        </Text>
         </Box>
       </GridItem>
     </Grid>
