@@ -54,7 +54,7 @@ const NavBar = () => {
       </Grid>
 
       {/* Desktop Menu */}
-      <Flex justify="space-around" display={{ base: "none", xl: "flex" }} paddingX={8} paddingY={4} bg="linear-gradient(to right, #186bd8, #ff1d25)" color="white">
+      <Flex justify="space-around" display={{ base: "none", xl: "flex" }} paddingX={8} paddingY={4} bg="linear-gradient(to right, #1E3A8A, #ff4C4C)" color="white">
         <Flex gap={6}>
           <CategoryList />
         </Flex>

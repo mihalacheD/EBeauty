@@ -55,7 +55,7 @@ const TopProducts = () => {
     };
   return (
     <div className="slider-container">
-       <Container bg="#ff1d25" w="100%" p={4} display="flex" justifyContent="center" my={9} >
+       <Container bg="#ff4c4c" w="100%" p={4} display="flex" justifyContent="center" my={9} >
         <Text color='white' fontSize='2xl'fontWeight='bolder'>Top Products</Text>
       </Container>
        <Container w="100%" my={9}>
